@@ -6,16 +6,16 @@ const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const prevSlideHandler = () => {
-        setCurrentSlide(prev => prev - 1 )
+        setCurrentSlide(prev => prev - 1)
     }
 
     const nextSlideHandler = () => {
-        setCurrentSlide(prev => prev + 1 )
+        setCurrentSlide(prev => prev + 1)
     }
 
     return (
         <div className='relative h-screen overflow-hidden'>
-            <div className='flex h-full -translate-x-36'>
+            <div className={`flex h-full duration-500 transition-transform`} style={{ transform: `translateX(-${currentSlide * 100}vw)` }}>
                 <img src={headerOne} alt="" className='w-screen object-cover object-center' />
                 <img src={headerOne} alt="" className='w-screen object-cover object-center' />
             </div>
