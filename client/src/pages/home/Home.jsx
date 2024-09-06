@@ -8,9 +8,15 @@ const Home = () => {
         <>
             <Slider />
 
-            <Featured />
+            <Featured
+                type="Featured"
+            />
 
             <Categories />
+
+            <Featured
+                type="Trending"
+            />
         </>
     );
 }
