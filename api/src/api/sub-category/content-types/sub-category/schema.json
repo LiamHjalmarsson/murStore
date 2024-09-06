@@ -17,17 +17,21 @@
       "required": true,
       "unique": true
     },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "sub_categories"
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     },
     "products": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product",
       "mappedBy": "sub_categories"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "sub_categories"
     }
   }
 }

@@ -35,6 +35,19 @@
     "isNew": {
       "type": "boolean"
     },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "normal",
+        "featured",
+        "trending"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
     "categories": {
       "type": "relation",
       "relation": "manyToMany",
@@ -46,14 +59,6 @@
       "relation": "manyToMany",
       "target": "api::sub-category.sub-category",
       "inversedBy": "products"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "normal",
-        "featured",
-        "trending"
-      ]
     }
   }
 }

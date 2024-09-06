@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom"
-import headerOne from "../../assets/headerOne.jpg"
 
 const Card = ({ product }) => {
     const { id, attributes } = product;
 
     return (
-        <Link className='' to="/">
+        <Link className='' to={`product/${attributes.slug}`}>
             <div className='flex flex-col gap-2 capitalize'>
                 <div className='w-48 h-64 relative'>
                     {attributes.isNew && (

@@ -803,15 +803,16 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     description: Attribute.Text;
     image: Attribute.Media<'images'>;
-    sub_categories: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::sub-category.sub-category'
-    >;
+    slug: Attribute.UID<'api::category.category', 'title'>;
     products: Attribute.Relation<
       'api::category.category',
       'manyToMany',
       'api::product.product'
+    >;
+    sub_categories: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::sub-category.sub-category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -824,6 +825,38 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'order';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.String & Attribute.Required;
+    stipeId: Attribute.String & Attribute.Required;
+    products: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
       'oneToOne',
       'admin::user'
     > &
@@ -848,6 +881,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
     image: Attribute.Media<'images', true> & Attribute.Required;
     price: Attribute.Decimal & Attribute.Required;
     isNew: Attribute.Boolean;
+    type: Attribute.Enumeration<['normal', 'featured', 'trending']>;
+    slug: Attribute.UID<'api::product.product', 'title'> & Attribute.Required;
     categories: Attribute.Relation<
       'api::product.product',
       'manyToMany',
@@ -858,7 +893,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::sub-category.sub-category'
     >;
-    type: Attribute.Enumeration<['normal', 'featured', 'trending']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -890,15 +924,16 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
-    categories: Attribute.Relation<
-      'api::sub-category.sub-category',
-      'manyToMany',
-      'api::category.category'
-    >;
+    slug: Attribute.UID<'api::sub-category.sub-category', 'title'>;
     products: Attribute.Relation<
       'api::sub-category.sub-category',
       'manyToMany',
       'api::product.product'
+    >;
+    categories: Attribute.Relation<
+      'api::sub-category.sub-category',
+      'manyToMany',
+      'api::category.category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -937,6 +972,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::category.category': ApiCategoryCategory;
+      'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
     }

@@ -28,16 +28,20 @@
         "images"
       ]
     },
-    "sub_categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::sub-category.sub-category",
-      "mappedBy": "categories"
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     },
     "products": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product",
+      "mappedBy": "categories"
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sub-category.sub-category",
       "mappedBy": "categories"
     }
   }
