@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 const Card = ({ product }) => {
     const { id, attributes } = product;
 
+    console.log(attributes.image.data.attributes);
+    
     return (
         <Link className='' to={`product/${attributes.slug}`}>
             <div className='flex flex-col gap-2 capitalize'>
@@ -13,7 +15,7 @@ const Card = ({ product }) => {
                             New season
                         </div>
                     )}
-                    <img src={import.meta.env.VITE_APP_API_UPLOAD_URL + attributes.image?.data?.[0]?.attributes?.url } alt="" className='object-cover object-center w-full h-full' />
+                    <img src={import.meta.env.VITE_APP_API_UPLOAD_URL + attributes.image?.data?.attributes?.url } alt="" className='object-cover object-center w-full h-full' />
                 </div>
 
                 <div className='px-2'>

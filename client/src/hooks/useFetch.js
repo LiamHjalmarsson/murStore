@@ -9,7 +9,10 @@ export const useFetch = (url) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await fetch(import.meta.env.VITE_APP_API_URL + url);
+                const response = await fetch(import.meta.env.VITE_APP_API_URL + url, {
+                    headers: { Authorization: 'bearer ' + import.meta.env.VITE_APP_API_TOKEN }
+                });
+
                 const recourse = await response.json();
 
                 if (!response.ok) {
@@ -25,7 +28,7 @@ export const useFetch = (url) => {
         }
         fetchData();
     }, [url]);
-    
+
     return {
         data,
         loading,

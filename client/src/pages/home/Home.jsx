@@ -9,14 +9,10 @@ const Home = () => {
             <Slider />
 
             <Featured
-                type="Featured"
+                type="Trending"
             />
 
             <Categories />
-
-            <Featured
-                type="Trending"
-            />
         </>
     );
 }
