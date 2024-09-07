@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
-import headerOne from "../../assets/headerOne.jpg"
 
 const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -16,8 +15,8 @@ const Slider = () => {
     return (
         <div className='relative h-screen overflow-hidden'>
             <div className={`flex h-full duration-500 transition-transform`} style={{ transform: `translateX(-${currentSlide * 100}vw)` }}>
-                <img src={headerOne} alt="" className='w-screen object-cover object-center' />
-                <img src={headerOne} alt="" className='w-screen object-cover object-center' />
+                {/* <img src={headerOne} alt="" className='w-screen object-cover object-center' /> */}
+                {/* <img src={headerOne} alt="" className='w-screen object-cover object-center' /> */}
             </div>
 
             <div className=' absolute z-10 bottom-20 left-1/2 right-1/2 flex gap-12 m-auto'>

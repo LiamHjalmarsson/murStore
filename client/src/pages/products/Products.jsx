@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
-import headerOne from "../../assets/headerOne.jpg";
 import { useFetch } from '../../hooks/useFetch';
 import List from '../../components/list/List';
 
@@ -66,7 +65,7 @@ const Products = () => {
             </div>
 
             <div className='right flex-[3]'>
-                <img src={headerOne} alt="" className='w-full h-80 object-cover mb-10' />
+                {/* <img src={headerOne} alt="" className='w-full h-80 object-cover mb-10' /> */}
                 <List
                     id={id}
                     price={maxPrice}
