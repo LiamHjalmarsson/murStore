@@ -19,6 +19,8 @@ export const useFetch = (url) => {
                     throw new Error(recourse);
                 }
 
+                console.log(recourse);
+                
                 setData(recourse.data);
             } catch (error) {
                 console.log(error);
