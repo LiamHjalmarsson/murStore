@@ -15,11 +15,11 @@ export const useFetch = (url) => {
 
                 const recourse = await response.json();
 
+                console.log(recourse);
                 if (!response.ok) {
                     throw new Error(recourse);
                 }
 
-                console.log(recourse);
                 
                 setData(recourse.data);
             } catch (error) {

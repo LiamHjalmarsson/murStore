@@ -6,7 +6,7 @@ import Categories from '../../components/categories/Categories';
 const Home = () => {
     return (
         <>
-            {/* <Slider /> */}
+            <Slider />
 
             <Featured
                 type="Trending"
