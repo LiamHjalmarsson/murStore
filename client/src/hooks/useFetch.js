@@ -13,13 +13,13 @@ export const useFetch = (url) => {
                     headers: { Authorization: 'bearer ' + import.meta.env.VITE_APP_API_TOKEN }
                 });
 
+                console.log(response);
                 const recourse = await response.json();
 
                 console.log(recourse);
                 if (!response.ok) {
                     throw new Error(recourse);
                 }
-
                 
                 setData(recourse.data);
             } catch (error) {
